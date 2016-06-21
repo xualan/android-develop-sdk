@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SDK.iml" filepath="$PROJECT_DIR$/SDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alanhttp/alanhttp.iml" filepath="$PROJECT_DIR$/alanhttp/alanhttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/annotationoptions/annotationoptions.iml" filepath="$PROJECT_DIR$/annotationoptions/annotationoptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseoptions/baseoptions.iml" filepath="$PROJECT_DIR$/baseoptions/baseoptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpoptions/httpoptions.iml" filepath="$PROJECT_DIR$/httpoptions/httpoptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javatest/javatest.iml" filepath="$PROJECT_DIR$/javatest/javatest.iml" />
+    </modules>
+  </component>
+</project>

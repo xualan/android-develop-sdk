@@ -1,0 +1,5 @@
+description about this library behavior:
+本lib的主要功能描述
+1.使用到的常用的方法
+2.所有依赖库的基础类库
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="alan_btn_text_size">16sp</dimen>
+    <dimen name="alan_btn_margin_size">10dp</dimen>
+    <string name="alan_btn_http_test">http test</string>
+    <string name="alan_btn_annotation_test">annotation test</string>
+    <string name="alan_annote_onclick">onClick test</string>
+    <string name="alan_annote_onclick_2">onClick type2 test</string>
+    <string name="alan_annote_onlongclick">onLongClick test</string>
+    <string name="alan_annote_onitemclick">onItemClick test</string>
+    <string name="alan_annote_onitemlongclick">onItemLongClick test</string>
+    <string name="alan_annote_onitemselect">onItemSelect test</string>
+
+    <style name="alan_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/alan_btn_text_size</item>
+        <item name="android:layout_marginTop">@dimen/alan_btn_margin_size</item>
+    </style>
+
+
+
+</resources>
