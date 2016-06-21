@@ -1,0 +1,13 @@
+[core]
+	bare = true
+	filemode = false
+	symlinks = false
+	ignorecase = true
+	safecrlf = true
+[core]
+	repositoryformatversion = 0
+[user]
+	name = xuAlan
+	signingkey = xbl199097
+[user]
+	email = 644893183@qq.com
