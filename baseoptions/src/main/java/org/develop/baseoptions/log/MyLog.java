@@ -29,7 +29,7 @@ public class MyLog {
     /**
      * Log级别
      */
-    enum MyLogGrade {
+    public enum MyLogGrade {
         VERBOSE,
         DEBUG,
         INFO,
