@@ -31,6 +31,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
     @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        try {
+            ViewInjectManager.initViewInject(this);
+        } catch (ViewInjectException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_annotation_test:

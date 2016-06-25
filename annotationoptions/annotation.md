@@ -1,5 +1,8 @@
 # AnnotationOptions #
 
+
+
+
 ### 功能支持 ###
 - View的子类，单击onClick()，长按onLongClick()
 - ListView或者AbsListView的子类的onItemClick()和onItemLongClick()
@@ -9,9 +12,23 @@
 ### 使用方式 ###
 - 首先，添加module支持
 
-	`
+	```
 	compile project(':annotationoptions')
-	`
+	```
+
+	<font color="#ff0000">在调用的Activity中复写setContentView(),如下：</font>
+
+	```
+	@Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        try {
+            ViewInjectManager.initViewInject(this);
+        } catch (ViewInjectException e) {
+            e.printStackTrace();
+        }
+    }
+	```
 
 - 调用样式
 
@@ -24,91 +41,61 @@
 
   - 调用（无点击）
 
-		`
-		@ViewInject(id = R.id.anno_btn_test_onclick) 
-		`
-
-		`
+		```
+		@ViewInject(id = R.id.anno_btn_test_onclick)
 		Button btnClick;
-		`  
+		```
 
   - View调用点击（默认点击）
- 
-  		`
-		@ViewInject(id = R.id.anno_btn_test_onclick, clickType = ClickType.ON_CLICK) 
-		`
 
-		`
+  		```
+		@ViewInject(id = R.id.anno_btn_test_onclick, clickType = ClickType.ON_CLICK)
 		Button btnClick;
-		`  
+		```
   - View调用点击（自定义点击）
 
-		`
-		@ViewInject(id = R.id.anno_btn_test_onclick, onClick = "click") 
-		`
-
-		`
+		```
+		@ViewInject(id = R.id.anno_btn_test_onclick, onClick = "click")
 		Button btnClick;
-		`
- 
-		`
 		public void click(View v) {
-		`
-		`
 		        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
 		    }
-		`
+		```
+	- View调用长按（默认长按）
 
-  - View调用长按（默认长按）
- 
-  		`
-		@ViewInject(id = R.id.anno_btn_test_onlongclick, clickType = ClickType.ON_LONG_CLICK) 
-		`
-
-		`
+  		```
+		@ViewInject(id = R.id.anno_btn_test_onlongclick, clickType = ClickType.ON_LONG_CLICK)
 		Button btnClick;
-		`  
-  - View调用长按（自定义长按）
+		```
+  	- View调用长按（自定义长按）
 
-		`
-		@ViewInject(id = R.id.anno_btn_test_onlongclick, onLongClick = "longclick") 
-		`
-
-		`
+		```
+		@ViewInject(id = R.id.anno_btn_test_onlongclick, onLongClick = "longclick")
 		Button btnClick;
-		`
- 
-		`
 		public void longclick(View v) {
-		`
-		`
 		        Toast.makeText(this, "longclick", Toast.LENGTH_SHORT).show();
 		    }
-		`
+		```
 
-  - AbsListView调用（默认方法） 
+  - AbsListView调用（默认方法）
 
 		包括onItemClick和onItemLongClick，使用默认，选择clickType类型
-  
-		` @ViewInject(id = R.id.anno_list_onitemclick, clickType = ClickType.ON_ITEM_CLICK)
-		`
 
-		`
-		    ListView listView;
-		`
-    
+		```
+		@ViewInject(id = R.id.anno_list_onitemclick, clickType = ClickType.ON_ITEM_CLICK)
+		ListView listView;
+    	```
 
   - AbsListView调用（自定义方法）
 
 		同上自定义，自定义的方法名称参数要与系统默认一致
   - AbsSpinner调用（默认方法）
-  - AbsSpinner调用（自定义方法）   
+  - AbsSpinner调用（自定义方法）
 
 
 ### ClickType ###
-  
 
-
+```
 	/*
      * 未点击
      */
@@ -137,8 +124,6 @@
      * 未选择
      */
     ON_ITEM_SELECTED_NOTHING;
-
-
-
+```
 
 
