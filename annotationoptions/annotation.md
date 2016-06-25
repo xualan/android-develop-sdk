@@ -9,9 +9,9 @@
 ### 使用方式 ###
 - 首先，添加module支持
 
-	`
+	```
 	compile project(':annotationoptions')
-	`
+	```
 
 - 调用样式
 
@@ -24,13 +24,10 @@
 
   - 调用（无点击）
 
-		`
+		```
 		@ViewInject(id = R.id.anno_btn_test_onclick) 
-		`
-
-		`
 		Button btnClick;
-		`  
+		```  
 
   - View调用点击（默认点击）
  
