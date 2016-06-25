@@ -27,6 +27,7 @@
 		`
 		@ViewInject(id = R.id.anno_btn_test_onclick) 
 		`
+
 		`
 		Button btnClick;
 		`  
@@ -36,6 +37,7 @@
   		`
 		@ViewInject(id = R.id.anno_btn_test_onclick, clickType = ClickType.ON_CLICK) 
 		`
+
 		`
 		Button btnClick;
 		`  
@@ -44,6 +46,7 @@
 		`
 		@ViewInject(id = R.id.anno_btn_test_onclick, onClick = "click") 
 		`
+
 		`
 		Button btnClick;
 		`
@@ -61,6 +64,7 @@
   		`
 		@ViewInject(id = R.id.anno_btn_test_onlongclick, clickType = ClickType.ON_LONG_CLICK) 
 		`
+
 		`
 		Button btnClick;
 		`  
@@ -69,6 +73,7 @@
 		`
 		@ViewInject(id = R.id.anno_btn_test_onlongclick, onLongClick = "longclick") 
 		`
+
 		`
 		Button btnClick;
 		`
@@ -87,6 +92,7 @@
   
 		` @ViewInject(id = R.id.anno_list_onitemclick, clickType = ClickType.ON_ITEM_CLICK)
 		`
+
 		`
 		    ListView listView;
 		`
