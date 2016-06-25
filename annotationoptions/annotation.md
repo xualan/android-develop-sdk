@@ -59,7 +59,7 @@
 		    }
 		`
 
-	- View调用长按（默认长按）
+  - View调用长按（默认长按）
  
   		`
 		@ViewInject(id = R.id.anno_btn_test_onlongclick, clickType = ClickType.ON_LONG_CLICK) 
@@ -68,7 +68,7 @@
 		`
 		Button btnClick;
 		`  
-  	- View调用长按（自定义长按）
+  - View调用长按（自定义长按）
 
 		`
 		@ViewInject(id = R.id.anno_btn_test_onlongclick, onLongClick = "longclick") 
