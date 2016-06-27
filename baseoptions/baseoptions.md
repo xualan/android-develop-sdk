@@ -28,3 +28,12 @@
 	MyLog.closeLog();
 	```
 
+- MyToast
+
+    可设置自定义布局
+
+    ```
+    MyToast.show(this,"你好-------");
+    ```
+
+

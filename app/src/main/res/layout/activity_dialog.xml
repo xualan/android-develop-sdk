@@ -4,30 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <Button
-                android:id="@+id/btn_annotation_test"
+                android:id="@+id/dialog_btn_test"
                 style="@style/alan_button_style"
-                android:text="@string/alan_btn_annotation_test"
-                />
-            <Button
-                android:id="@+id/btn_dialog_test"
-                style="@style/alan_button_style"
-                android:text="@string/alan_btn_dialog_test"
-                />
-            <Button
-                android:id="@+id/btn_toast_test"
-                style="@style/alan_button_style"
-                android:text="@string/alan_btn_toast_test"
-                />
+                android:text="@string/alan_btn_dialog_test"/>
+
 
         </LinearLayout>
+
 
     </ScrollView>
 

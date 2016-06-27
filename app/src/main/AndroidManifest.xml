@@ -17,6 +17,13 @@
         </activity>
         <activity android:name=".annotation.AnnotationActivity">
         </activity>
+        <activity android:name=".dialog.DialogActivity">
+        </activity>
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

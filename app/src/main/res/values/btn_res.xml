@@ -5,6 +5,12 @@
     <dimen name="alan_btn_margin_size">10dp</dimen>
     <string name="alan_btn_http_test">http test</string>
     <string name="alan_btn_annotation_test">annotation test</string>
+    <string name="alan_btn_dialog_test">dialog test</string>
+    <string name="alan_btn_toast_test">toast test</string>
+
+
+
+
     <string name="alan_annote_onclick">onClick test</string>
     <string name="alan_annote_onclick_2">onClick type2 test</string>
     <string name="alan_annote_onlongclick">onLongClick test</string>

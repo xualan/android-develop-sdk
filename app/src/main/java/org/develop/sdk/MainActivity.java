@@ -1,6 +1,5 @@
 package org.develop.sdk;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,33 +10,25 @@ import org.develop.annotationoptions.ViewAnnotation.ClickType;
 import org.develop.annotationoptions.ViewAnnotation.ViewInject;
 import org.develop.annotationoptions.ViewAnnotation.ViewInjectManager;
 import org.develop.baseoptions.log.MyLog;
-import org.develop.baseoptions.log.OnMyLogListener;
+import org.develop.baseoptions.toast.MyToast;
 import org.develop.sdk.annotation.AnnotationActivity;
+import org.develop.sdk.dialog.DialogActivity;
 
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
     @ViewInject(id = R.id.btn_annotation_test,clickType = ClickType.ON_CLICK)
     Button btnAnnote;
+    @ViewInject(id = R.id.btn_dialog_test,clickType = ClickType.ON_CLICK)
+    Button btnDialog;
 
+    @ViewInject(id = R.id.btn_toast_test,clickType = ClickType.ON_CLICK)
+    Button btnToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            ViewInjectManager.initViewInject(this);
-        } catch (ViewInjectException e) {
-            e.printStackTrace();
-        }
-
-        MyLog.initContextResource(getApplication());
-        MyLog.setOnMyLogListener(new OnMyLogListener() {
-            @Override
-            public void onLogPrint(String tag, MyLog.MyLogGrade grade, String msg) {
-                //TODO 打印输出
-            }
-        });
 
     }
 
@@ -58,6 +49,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 MyLog.d("tag","-------msg-------");
                 startActivity(new Intent(this, AnnotationActivity.class));
                 break;
+            case R.id.btn_dialog_test:
+                startActivity(new Intent(this, DialogActivity.class));
+                break;
+            case R.id.btn_toast_test:
+                break;
+            MyToast.show(this,"你好-------");
         }
     }
 }
