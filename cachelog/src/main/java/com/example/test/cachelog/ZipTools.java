@@ -1,4 +1,6 @@
-package com.example;
+package com.example.test.cachelog;
+
+import org.develop.baseoptions.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -16,7 +18,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 
-public class MyClass {
+public class ZipTools {
 
     /**
      * 递归压缩文件夹
@@ -201,51 +203,6 @@ public class MyClass {
             }
             bos.flush();
             bos.close();
-        }
-    }
-
-    public static void main(String[] args) {
-        String zipPath = "d:\\ziptest\\zipPath";
-        String dir = "d:\\ziptest\\rawfiles";
-        String zipFileName = "test.zip";
-        //随机写入一些数据
-        File file=new File(dir,"test.txt");
-
-        if(!file.exists()){
-            file.getParentFile().mkdirs();
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        try {
-            RandomAccessFile randomAccessFile=new RandomAccessFile(file,"rw");
-            for(int i=0;i<2000;i++){
-                String temp="line--------------"+i;
-                randomAccessFile.write(temp.getBytes());
-            }
-            randomAccessFile.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            zip(dir, zipPath, zipFileName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String zipFilePath = "D:\\ziptest\\zipPath\\test.zip";
-        String unzipFilePath = "D:\\ziptest\\zipPath";
-        try {
-            unzip(zipFilePath, unzipFilePath, true);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:id="@+id/log_start_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start test"/>
+
+    <Button
+        android:id="@+id/clear_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="clear log"/>
+    <Button
+        android:id="@+id/zip_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="zip log"/>
+
+</LinearLayout>

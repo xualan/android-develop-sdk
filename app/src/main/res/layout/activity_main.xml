@@ -26,6 +26,11 @@
                 style="@style/alan_button_style"
                 android:text="@string/alan_btn_toast_test"
                 />
+            <Button
+                android:id="@+id/btn_log_test"
+                style="@style/alan_button_style"
+                android:text="@string/alan_btn_log_test"
+                />
 
         </LinearLayout>
 
