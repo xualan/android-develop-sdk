@@ -78,16 +78,16 @@ public class LogActivity extends BaseActivity implements View.OnClickListener{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for(int i=0;i<100;i++){
+                for(int i=0;i<1000;i++){
                     LogPublishEntity logPublish= new LogPublishEntity();
-                    logPublish.setStartTime(System.currentTimeMillis());
+                    logPublish.setStartTime(System.currentTimeMillis()+"");
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    logPublish.setFunctionName("FIRST THREAD MSG"+i);
-                    logPublish.setEndTime(System.currentTimeMillis());
+                    logPublish.setFuncName("FIRST THREAD MSG"+i);
+                    logPublish.setEndTime(System.currentTimeMillis()+"");
                     LogUtils.log(logPublish);
                 }
             }
@@ -95,17 +95,17 @@ public class LogActivity extends BaseActivity implements View.OnClickListener{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for(int i=0;i<100;i++){
+                for(int i=0;i<1000;i++){
 //                    LogUtils.i(TAG+" SECOND THREAD","MSG"+i);
                     LogPublishEntity logPublish= new LogPublishEntity();
-                    logPublish.setStartTime(System.currentTimeMillis());
+                    logPublish.setStartTime(System.currentTimeMillis()+"");
                     try {
                         Thread.sleep(300);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    logPublish.setFunctionName("SECOND THREAD MSG"+i);
-                    logPublish.setEndTime(System.currentTimeMillis());
+                    logPublish.setFuncName("SECOND THREAD MSG"+i);
+                    logPublish.setEndTime(System.currentTimeMillis()+"");
                     LogUtils.log(logPublish);
                 }
             }
@@ -113,16 +113,16 @@ public class LogActivity extends BaseActivity implements View.OnClickListener{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for(int i=0;i<100;i++){
+                for(int i=0;i<1000;i++){
                     LogPublishEntity logPublish= new LogPublishEntity();
-                    logPublish.setStartTime(System.currentTimeMillis());
+                    logPublish.setStartTime(System.currentTimeMillis()+"");
                     try {
                         Thread.sleep(400);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    logPublish.setFunctionName("THIRD THREAD MSG"+i);
-                    logPublish.setEndTime(System.currentTimeMillis());
+                    logPublish.setFuncName("THIRD THREAD MSG"+i);
+                    logPublish.setEndTime(System.currentTimeMillis()+"");
                     LogUtils.log(logPublish);
                 }
             }

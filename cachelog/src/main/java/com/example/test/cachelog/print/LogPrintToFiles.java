@@ -59,7 +59,7 @@ public class LogPrintToFiles<T> {
      */
     public void clearLog(){
         File file = new File(fileDirs, fileName);
-        file.deleteOnExit();
+        file.delete();
     }
 
 
@@ -75,6 +75,12 @@ public class LogPrintToFiles<T> {
             if (!file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
+            }
+
+            if(file.length()>LogConfig.getInstance().getFileMaxSize()){
+                //大于文件限制，重新建立文件
+                refreshFileName();
+                printToFiles(list);
             }
             randomAccessFile=new RandomAccessFile(file,"rws");
             fileChannel=randomAccessFile.getChannel();
@@ -140,28 +146,21 @@ public class LogPrintToFiles<T> {
             @Override
             public void run() {
                 //判断文件是否正在写入
-                File file = new File(fileDirs, fileName);
+                File file = new File(fileDirs);
                 if (file.exists()) {
-                    RandomAccessFile randomAccessFile = null;
-                    FileChannel fileChannel = null;
-                    FileLock fl = null;
                     try {
-                        randomAccessFile=new RandomAccessFile(file,"rw");
-                        fileChannel=randomAccessFile.getChannel();
-                        fl = fileChannel.tryLock();
-                        if (fl.isValid()) {
-                            //以获取文件锁
-                            //刷新文件名称
-                            String zipFileName=LogConfig.getInstance().getFileSuffixName()+"Log.zip";
-                            refreshFileName();
-                            //文件压缩
-                            ZipTools.zip(file.getAbsolutePath(),file.getParent(),zipFileName);
-                            listener.onSuccess(zipFileName);
-                        }else{
-                            //隔一段时间，请求
-                            Log.i(TAG,"文件锁正在被占用");
-                            listener.onError("文件锁正在被占用");
+                        //以获取文件锁
+                        //刷新文件名称
+                        String zipFileName=LogConfig.getInstance().getFileSuffixName()+"Log.zip";
+                        //记录文件夹内的文件名，压缩后删除源文件
+                        File[] files=file.listFiles();
+                        refreshFileName();
+                        //文件压缩
+                        ZipTools.zip(file.getAbsolutePath(),file.getParent(),zipFileName);
+                        for (File temp : files) {
+                            temp.delete();
                         }
+                        listener.onSuccess(zipFileName);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                         listener.onError(e.getMessage());
@@ -171,23 +170,6 @@ public class LogPrintToFiles<T> {
                     } catch (Exception e) {
                         e.printStackTrace();
                         listener.onError(e.getMessage());
-                    }finally {
-                        if(fileChannel!=null){
-                            try {
-                                fileChannel.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if(randomAccessFile!=null){
-                            try {
-                                randomAccessFile.close();
-                                fileChannel.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
                     }
                 }
             }

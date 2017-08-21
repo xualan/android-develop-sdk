@@ -45,6 +45,18 @@ public class LogConfig {
      */
     private String fileSuffixName=System.currentTimeMillis()+"";
 
+    /**
+     * 文件最大限制
+     */
+    private int fileMaxSize=1024*1024*10;
+
+    /**
+     * 压缩文件目录
+     */
+    private String zipPath="zipLog";
+
+
+
 
     public boolean isCloseable() {
         return closeable;
@@ -95,4 +107,20 @@ public class LogConfig {
         this.fileSuffixName = fileSuffixName;
     }
 
+    public int getFileMaxSize() {
+        return fileMaxSize;
+    }
+
+    public void setFileMaxSize(int fileMaxSize) {
+        this.fileMaxSize = fileMaxSize;
+    }
+
+
+    public String getZipPath() {
+        return zipPath;
+    }
+
+    public void setZipPath(String zipPath) {
+        this.zipPath = zipPath;
+    }
 }

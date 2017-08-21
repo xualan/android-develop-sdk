@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedOutputStream;
@@ -204,6 +205,25 @@ public class MyClass {
         }
     }
 
+    /**
+     * byte(字节)根据长度转成kb(千字节)和mb(兆字节)
+     *
+     * @param bytes
+     * @return
+     */
+    public static String bytes2kb(long bytes) {
+        BigDecimal filesize = new BigDecimal(bytes);
+        BigDecimal megabyte = new BigDecimal(1024 * 1024);
+        float returnValue = filesize.divide(megabyte, 2, BigDecimal.ROUND_UP)
+                .floatValue();
+        if (returnValue > 1)
+            return (returnValue + "MB");
+        BigDecimal kilobyte = new BigDecimal(1024);
+        returnValue = filesize.divide(kilobyte, 2, BigDecimal.ROUND_UP)
+                .floatValue();
+        return (returnValue + "KB");
+    }
+
     public static void main(String[] args) {
         String zipPath = "d:\\ziptest\\zipPath";
         String dir = "d:\\ziptest\\rawfiles";
@@ -233,6 +253,8 @@ public class MyClass {
             e.printStackTrace();
         }
 
+
+        System.out.println("length:"+file.length());
 
         try {
             zip(dir, zipPath, zipFileName);

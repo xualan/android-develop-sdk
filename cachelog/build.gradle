@@ -23,5 +23,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':baseoptions')
+    compile 'com.alibaba:fastjson:1.2.35'
 }
 

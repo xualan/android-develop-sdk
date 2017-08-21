@@ -65,6 +65,8 @@ public class SynLog {
      */
     private boolean writeToFiles=false;
 
+    private volatile boolean writting=false;
+
     /**
      * 加载log配置文件
      */
@@ -83,6 +85,7 @@ public class SynLog {
         logList.add(logEntity);
         Log.i("toLog","----------"+logEntity.toString());
         lock.writeLock().unlock();
+        checkState();
     }
 
     public void toLog(LogGrade grade,String tag,String msg){
@@ -96,6 +99,7 @@ public class SynLog {
         Log.i("toLog","----------"+entity.toString());
         logList.add(entity);
         lock.writeLock().unlock();
+        checkState();
     }
 
     private LogThread logThread;
@@ -116,6 +120,13 @@ public class SynLog {
         if(logThread.isInterrupted()||!logThread.isAlive()){
             logThread.start();
         }
+        if(logHandler!=null&&!logHandler.hasMessages(SYN_LOG_WRITE)){
+            Log.i("logHandler","--------logHandler--NOT HAS MSG");
+            logHandler.sendEmptyMessage(SYN_LOG_WRITE);
+        }else {
+            Log.i("logHandler","--------logHandler--HAS MSG");
+        }
+
     }
 
 
@@ -135,7 +146,8 @@ public class SynLog {
                     switch (msg.what){
                         case SYN_LOG_WRITE:
                             printLog();
-                            logHandler.sendEmptyMessageDelayed(SYN_LOG_WRITE,delaySeconds*1000);
+                            logHandler.removeMessages(SYN_LOG_WRITE);
+//                            logHandler.sendEmptyMessageDelayed(SYN_LOG_WRITE,delaySeconds*1000);
                             break;
                         default:
                             break;
@@ -143,7 +155,7 @@ public class SynLog {
 
                 }
             };
-            logHandler.sendEmptyMessageDelayed(SYN_LOG_WRITE,delaySeconds*1000);
+//            logHandler.sendEmptyMessageDelayed(SYN_LOG_WRITE,delaySeconds*1000);
             Looper.loop();
         }
     }
@@ -155,11 +167,12 @@ public class SynLog {
         lock.readLock().lock();
         List<Object> temp=logList;
         if(temp.size()==0){
-            Log.i("print log","------temp---"+temp.size());
+            Log.i("printLog","------temp---"+temp.size());
             return;
         }
+        Log.i("printLog","------temp---"+temp.size());
         if(temp.size()>SYN_LOG_MAX){
-            Log.e("print log","---缓存超过最大条数--清空缓存数据---");
+            Log.e("printLog","---缓存超过最大条数--清空缓存数据---");
             logList.clear();
             return;
         }
