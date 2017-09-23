@@ -44,7 +44,7 @@ public abstract class BaseLog {
     /**
      * 是否写入文件
      */
-    private static boolean writeToFiles=false;
+    private static boolean writeToFiles=true;
     private static String logDirs="mylog";
     /**
      * 日志文件目录

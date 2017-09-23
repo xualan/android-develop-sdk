@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.test.foregroundservice.MainServiceActivity;
+
 import org.develop.annotationoptions.Exception.ViewInjectException;
 import org.develop.annotationoptions.ViewAnnotation.ClickType;
 import org.develop.annotationoptions.ViewAnnotation.ViewInject;
@@ -30,6 +32,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @ViewInject(id = R.id.btn_log_test,clickType = ClickType.ON_CLICK)
     Button btnLog;
+    @ViewInject(id = R.id.btn_service_test,clickType = ClickType.ON_CLICK)
+    Button btnService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.btn_log_test:
                 startActivity(new Intent(this, LogActivity.class));
+                break;
+            case R.id.btn_service_test:
+                startActivity(new Intent(this, MainServiceActivity.class));
                 break;
 
         }
